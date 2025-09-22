@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ xsd-compact/lrml-compact.xsd" xmlns:ruleml="http://ruleml.org/spec">
+	<lrml:LegalReferences>
+		<lrml:LegalReference refersTo="ref_cc_art289para1" refID="/rs/2014-10-10/eng@/main#art289para1" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art289para3" refID="/rs/2014-10-10/eng@/main#art289para3" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art297para1" refID="/rs/2014-10-10/eng@/main#art297para1" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art297para2" refID="/rs/2014-10-10/eng@/main#art297para2" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art297para3" refID="/rs/2014-10-10/eng@/main#art297para3" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_bscs-1-2006-4-2008" refID="/rs/2006-04-17/eng@/main#art1item4" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art43" refID="/rs/2016-02-05/eng@/main#art43" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art82" refID="/rs/2016-02-05/eng@/main#art82" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art187para2" refID="/rs/2016-02-05/eng@/main#art187para2" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_lorts_art187para3" refID="/rs/2016-02-05/eng@/main#art187para3" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+		<lrml:LegalReference refersTo="ref_cc_art246para1" refID="/rs/2014-10-10/eng@/main#art246para1" refIDSystemName="AkomaNtoso3.0-2014-01"/>
+	</lrml:LegalReferences>
+	<lrml:Associations>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art289para1"/>
+			<lrml:toTarget keyref="#cc_art289para1a"/>
+			<lrml:toTarget keyref="#cc_art289para1b"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art289para3"/>
+			<lrml:toTarget keyref="#cc_art289para3"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art297para1"/>
+			<lrml:toTarget keyref="#cc_art297para1"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_bscs-1-2006-4-2008"/>
+			<lrml:toTarget keyref="#bscs-1-2006-4-2008"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art297para2"/>
+			<lrml:toTarget keyref="#cc_art297para2"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art297para3"/>
+			<lrml:toTarget keyref="#cc_art297para3"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art43"/>
+			<lrml:toTarget keyref="#lorts_art43"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art82"/>
+			<lrml:toTarget keyref="#lorts_art82"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art187para2"/>
+			<lrml:toTarget keyref="#lorts_art187para2"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_lorts_art187para3"/>
+			<lrml:toTarget keyref="#lorts_art187para3"/>
+		</lrml:Association>
+		<lrml:Association>
+			<lrml:appliesSource keyref="#ref_cc_art246para1"/>
+			<lrml:toTarget keyref="#cc_art246para1a"/>
+			<lrml:toTarget keyref="#cc_art246para1b"/>
+			<lrml:toTarget keyref="#cc_art246para1c"/>
+			<lrml:toTarget keyref="#cc_art246para1d"/>
+			<lrml:toTarget keyref="#cc_art246para1e"/>
+			<lrml:toTarget keyref="#cc_art246para1f"/>
+			<lrml:toTarget keyref="#cc_art246para1g"/>
+			<lrml:toTarget keyref="#cc_art246para1h"/>
+			<lrml:toTarget keyref="#cc_art246para1i"/>
+			<lrml:toTarget keyref="#cc_art246para1j"/>
+		</lrml:Association>
+	</lrml:Associations>
+	<lrml:Statements>
+		<!-- ====================================================== -->
+		<!-- ==============  EMPLOYMENT CONTRACTS ================= -->
+		<!-- ====================================================== -->
+		<lrml:PrescriptiveStatement key="ll_art179para5pt1">
+			<ruleml:Rule key=":ll_art179para5pt1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>noLongerNeeded</ruleml:Rel>
+							<ruleml:Var>Employee</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Atom>
+						<ruleml:Rel>employmentTerminated</ruleml:Rel>
+						<ruleml:Var>Employee</ruleml:Var>
+					</ruleml:Atom>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:PrescriptiveStatement key="ll_art187para1">
+			<ruleml:Rule key=":ll_art187para1" closure="universal" strength="defeasible">
+				<ruleml:if>
+					<ruleml:And>
+						<ruleml:Atom>
+							<ruleml:Rel>pregnant</ruleml:Rel>
+							<ruleml:Var>Employee</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:And>
+				</ruleml:if>
+				<ruleml:then>
+					<ruleml:Neg>
+						<ruleml:Atom>
+							<ruleml:Rel>employmentTerminated</ruleml:Rel>
+							<ruleml:Var>Employee</ruleml:Var>
+						</ruleml:Atom>
+					</ruleml:Neg>
+				</ruleml:then>
+			</ruleml:Rule>
+		</lrml:PrescriptiveStatement>
+		<lrml:OverrideStatement>
+			<lrml:Override under="#ll_art179para5pt1" over="#ll_art187para1"/>
+		</lrml:OverrideStatement>
+
+	</lrml:Statements>
+</lrml:LegalRuleML>

@@ -20,11 +20,11 @@ contract EmploymentContract {
     }
 
     function setEmployeeIsPregnant(bool value) public {
-        //require(msg.sender == employee, "Only employee can call this function.");
+        require(msg.sender == employee, "Only employee can call this function.");
         employeeIsPregnant = value;
     }
     function setEmployeeIsNoLongerNeeded(bool value) public {
-        //require(msg.sender == employer, "Only employer can call this function.");
+        require(msg.sender == employer, "Only employer can call this function.");
         employeeIsNoLongerNeeded = value;
     }
     function isEmploymentTerminated() external returns (bool) {
@@ -45,3 +45,4 @@ contract EmploymentContract {
         return result;
     }
 }
+

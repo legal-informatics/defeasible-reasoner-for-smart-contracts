@@ -7,9 +7,6 @@ import 'prolog/Builder.sol';
 import 'prolog/Prolog.sol';
 import 'prolog/Substitution.sol';
 
-import "hardhat/console.sol";
-
-
 contract ReasoningContract is TermBuilder, IReasoningContract {
 	using RuleBuilder for Rule[];
 	using Substitution for Substitution.Info;
@@ -60,9 +57,6 @@ contract ReasoningContract is TermBuilder, IReasoningContract {
 	}
 
 	function loadMetaProgram() internal {
-		// supportive_rule(Name,Head,Body) :- strict(Name,Head,Body).
-		// supportive_rule(Name,Head,Body) :- defeasible(Name,Head,Body).
-		// rule(Name,Head,Body) :- supportive_rule(Name,Head,Body).
 		rule_base.add(pred("supportive_rule", Var("Name"), Var("Head"), Var("Body")),
 						pred("strict", Var("Name"), Var("Head"), Var("Body")));
 		rule_base.add(pred("supportive_rule", Var("Name"), Var("Head"), Var("Body")),
@@ -70,25 +64,17 @@ contract ReasoningContract is TermBuilder, IReasoningContract {
 		rule_base.add(pred("rule", Var("Name"), Var("Head"), Var("Body")),
 						pred("supportive_rule", Var("Name"), Var("Head"), Var("Body")));
 		
-		// definitely(X) :- fact(X).
-		// definitely(X) :- strict(_,X,L), definitely_provable(L).
-
 		rule_base.add(pred("definitely", Var("X")), pred("fact", Var("X")));
 		rule_base.add(pred("definitely", Var("X")),
 						pred("strict", ignore(), Var("X"), Var("L")),
 						pred("definitely_provable", Var("L")));
 
-		// definitely_provable([]).
-		// definitely_provable(X) :- definitely(X).
-		// definitely_provable([X1|X2]) :- definitely_provable(X1), definitely_provable(X2).
 		rule_base.add(pred("definitely_provable", list()));
 		rule_base.add(pred("definitely_provable", Var("X")), pred("definitely", Var("X")));
 		rule_base.add(pred("definitely_provable", listHT(Var("X1"), Var("X2"))),
 						pred("definitely_provable", Var("X1")),
 						pred("definitely_provable", Var("X2")));
 
-		// defeasibly(X) :- definitely(X).
-		// defeasibly(X) :- supportive_rule(R,X,L), defeasibly_provable(L), negation(X,X1), not(definitely(X1)), not(overruled(R,X)).
 		rule_base.add(pred("defeasibly", Var("X")), pred("definitely", Var("X")));
 		rule_base.add(pred("defeasibly", Var("X")),
 						pred("supportive_rule", Var("R"), Var("X"), Var("L")),
@@ -97,45 +83,30 @@ contract ReasoningContract is TermBuilder, IReasoningContract {
 						predNot("definitely", Var("X1")),
 						predNot("overruled", Var("R"), Var("X")));
 
-		// defeasibly_provable([]).
-		// defeasibly_provable(X) :- defeasibly(X).
-		// defeasibly_provable([X1|X2]) :- defeasibly_provable(X1), defeasibly_provable(X2).
-// [10]
 		rule_base.add(pred("defeasibly_provable", list()));
 		rule_base.add(pred("defeasibly_provable", Var("X")), pred("defeasibly", Var("X")));
 		rule_base.add(pred("defeasibly_provable", listHT(Var("X1"), Var("X2"))),
 						pred("defeasibly_provable", Var("X1")),
 						pred("defeasibly_provable", Var("X2")));
 
-// % overruled(_,X):- negation(X,X1), supportive_rule(S,X1,U), defeasibly_provable(U), not(defeated(S,X1)).
-
-		// defeated(S,X) :- sup(T,S), negation(X,X1), supportive_rule(T,X1,V), defeasibly_provable(V).
-		// negation(~(X),X) :- !.
-		// negation(X,~(X)).
 		rule_base.add(pred("defeated", Var("S"), Var("X")),
 						pred("sup", Var("T"), Var("S")),
 						pred("negation", Var("X"), Var("X1")),
 						pred("supportive_rule", Var("T"), Var("X1"), Var("V")),
 						pred("defeasibly_provable", Var("V")));
 
-		// overruled(_,X) :- negation(X,X1), supportive_rule(S,X1,U), supported_list(U), not(defeated(S,X1)).
 		rule_base.add(pred("overruled", ignore(), Var("X")),
 						pred("negation", Var("X"), Var("X1")),
 						pred("supportive_rule", Var("S"), Var("X1"), Var("U")),
 						pred("supported_list", Var("U")),
 						predNot("defeated", Var("S"), Var("X1"))); 
 
-		// supported(X) :- definitely(X).
-		// supported(X) :-supportive_rule(R,X,L), supported_list(L), not(defeated(R,X)).
 		rule_base.add(pred("supported", Var("X")), pred("definitely", Var("X")));
 		rule_base.add(pred("supported", Var("X")),
 						pred("supportive_rule", Var("R"), Var("X"), Var("L")),
 						pred("supported_list", Var("L")),
 						predNot("defeated", Var("R"), Var("X")));
 
-		// supported_list([]).
-		// supported_list(X) :- supported(X).
-		// supported_list([X1|X2]) :- supported_list(X1), supported_list(X2).
 		rule_base.add(pred("supported_list", list()));
 		rule_base.add(pred("supported_list", Var("X")), pred("supported", Var("X")));
 		rule_base.add(pred("supported_list", listHT(Var("X1"), Var("X2"))),
@@ -180,3 +151,4 @@ contract ReasoningContract is TermBuilder, IReasoningContract {
 			fromMemory(o_to.body[i], _from.body[i]);
 	}
 }
+
